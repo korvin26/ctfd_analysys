@@ -4,15 +4,13 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-    
     {
       "name": "Python Debugger: Current File with Arguments",
       "type": "debugpy",
       "justMyCode": false,
       "request": "launch",
       "program": "${file}",
-      "console": "integratedTerminal",
-      "args": ["--log-to", "file", "--debug", "--token", "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", "--owner", "korvin26", "--repo", "CTFd"]
+      "console": "integratedTerminal"
     }
   ]
 }

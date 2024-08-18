@@ -4,18 +4,9 @@ from graph import GitHubGraph
 from logging_setup import setup_logging
 import logging
 
+
 def main():
     args = parse_args()
-    # class myArgs:
-    #     def __init__(self):
-    #         self.log_to = "file"
-    #         self.debug = True
-    #         self.token = "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"
-    #         self.owner = "korvin26"
-    #         self.repo = "CTFd"
-    #         self.branch = "master"
-    
-    # args = myArgs()
 
     # Set up logging
     setup_logging(log_to=args.log_to, debug=args.debug)
@@ -28,10 +19,14 @@ def main():
     logger.info("Fetching repository data...")
 
     latest_releases = repo.get_latest_releases()
-    logger.info(f"Latest 3 releases: {[release['tag_name'] for release in latest_releases]}")
+    logger.info(
+        f"Latest 3 releases: {[release['tag_name'] for release in latest_releases]}"
+    )
 
     repo_info = repo.get_repo_info()
-    logger.info(f"Forks: {repo_info['forks_count']}, Stars: {repo_info['stargazers_count']}, Contributors: {len(repo.get_contributors())}")
+    logger.info(
+        f"Forks: {repo_info['forks_count']}, Stars: {repo_info['stargazers_count']}, Contributors: {len(repo.get_contributors())}"
+    )
 
     pr_counts = repo.get_contributors_by_pr()
     logger.info(f"Contributors by pull requests: {pr_counts}")
@@ -41,6 +36,7 @@ def main():
     graph = GitHubGraph(token=args.token, owner=args.owner, repo=args.repo)
     graph.create_commit_graph(branch=args.branch, output_file="commit_graph.dot")
     logger.info("Commit graph created successfully.")
+
 
 if __name__ == "__main__":
     main()
