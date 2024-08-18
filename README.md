@@ -8,5 +8,5 @@ Clone the repository and install the package:
 
 ```bash
 git clone https://github.com/korvin26/ctfd_analisys.git
-cd OX/ctfd_analysis
+cd ctfd_analysis
 pip install .
