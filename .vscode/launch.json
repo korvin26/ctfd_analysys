@@ -13,14 +13,16 @@
       "console": "integratedTerminal",
       "args": [
         "--log-to",
-        "file",
+        "stdout",
         "--debug",
         "--token",
-        "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",
+        "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",
         "--owner",
         "korvin26",
         "--repo",
-        "CTFd"
+        "CTFd",
+        "--branch",
+        "mark-2.4.3"
       ]
     }
   ]

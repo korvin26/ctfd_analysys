@@ -20,7 +20,7 @@ def main():
 
     latest_releases = repo.get_latest_releases()
     logger.info(
-        "Latest 3 releases: %s ", {[release['tag_name'] for release in latest_releases]}
+        f"Latest 3 releases: {[release['tag_name'] for release in latest_releases]}"
     )
 
     repo_info = repo.get_repo_info()
@@ -32,7 +32,7 @@ def main():
     )
 
     pr_counts = repo.get_contributors_by_pr()
-    logger.info("Contributors by pull requests: %s", {pr_counts})
+    logger.info(f"Contributors by pull requests: {pr_counts})")
 
     # Create commit graph
     logger.info("Creating commit graph...")
