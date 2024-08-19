@@ -1,26 +1,25 @@
-import requests
 import pydot
+
 from utils import exception_handler_wrapper
-from constants import BASE_URL
+from request_utils import RequestUtils
+from constants import BASE_URL, TIMEOUT
 
 class GitHubGraph:
 
-    def __init__(self, token, owner, repo):
+    def __init__(self, token: str, owner: str, repo: str):
         self.token = token
         self.owner = owner
         self.repo = repo
         self.headers = {"Authorization": f"token {self.token}"}
-        self.timeout = 3000
+        self.request_utils = RequestUtils(self.headers, TIMEOUT)
 
     @exception_handler_wrapper
-    def get_commits(self, branch="master"):
+    def get_commits(self, branch: str="master") -> str:
         url = f"{BASE_URL}/repos/{self.owner}/{self.repo}/commits?sha={branch}"
-        response = requests.get(url, headers=self.headers, timeout=self.timeout)
-        response.raise_for_status()
-        return response.json()
+        return self.request_utils.make_request(url).json()
 
     @exception_handler_wrapper
-    def create_commit_graph(self, branch="master", output_file="commit_graph.dot"):
+    def create_commit_graph(self, branch: str="master", output_file: str="commit_graph.dot") -> None:
         commits = self.get_commits(branch)
         graph = pydot.Dot(graph_type="digraph")
 

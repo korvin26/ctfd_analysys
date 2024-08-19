@@ -25,7 +25,7 @@ def main():
 
     repo_info = repo.get_repo_info()
     logger.info(
-        f"Forks: {repo_info['forks_count']}, Stars: {repo_info['stargazers_count']}, Contributors: {len(repo.get_contributors())}"
+        f"Forks: {repo_info.get('forks_count')}, Stars: {repo_info.get('stargazers_count')}, Contributors: {len(repo.get_contributors())}"
     )
 
     pr_counts = repo.get_contributors_by_pr()
