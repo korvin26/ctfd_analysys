@@ -15,8 +15,6 @@
         "--log-to",
         "file",
         "--debug",
-        "--token",
-        "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",
         "--owner",
         "korvin26",
         "--repo",
