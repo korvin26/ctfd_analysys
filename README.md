@@ -14,3 +14,5 @@ Clone the repository and install the package:
 git clone https://github.com/korvin26/ctfd_analisys.git
 cd ctfd_analysis
 pip install .
+
+
