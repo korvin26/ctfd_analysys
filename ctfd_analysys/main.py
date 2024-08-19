@@ -20,16 +20,19 @@ def main():
 
     latest_releases = repo.get_latest_releases()
     logger.info(
-        f"Latest 3 releases: {[release['tag_name'] for release in latest_releases]}"
+        "Latest 3 releases: %s ", {[release['tag_name'] for release in latest_releases]}
     )
 
     repo_info = repo.get_repo_info()
     logger.info(
-        f"Forks: {repo_info.get('forks_count')}, Stars: {repo_info.get('stargazers_count')}, Contributors: {len(repo.get_contributors())}"
+        "Forks: %s , Stars: %s , Contributors: %s",
+        repo_info.get('forks_count'),
+        repo_info.get('stargazers_count'),
+        len(repo.get_contributors())
     )
 
     pr_counts = repo.get_contributors_by_pr()
-    logger.info(f"Contributors by pull requests: {pr_counts}")
+    logger.info("Contributors by pull requests: %s", {pr_counts})
 
     # Create commit graph
     logger.info("Creating commit graph...")
